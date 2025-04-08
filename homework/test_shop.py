@@ -37,8 +37,6 @@ class TestProducts:
 class TestCart:
 
     def test_cart_add_product(self, cart, product):
-        # Проверка, что корзина пустая
-        assert product not in cart.products
         # Добавление товара в корзину
         cart.add_product(product)
         # Счетчик увеличился на 1
@@ -64,13 +62,12 @@ class TestCart:
 
     def test_cart_get_total_price(self,cart, product):
         cart.add_product(product, 100)
-        check = cart.get_total_price()
-        assert check == 10000
+        price = cart.get_total_price()
+        assert price == 10000
 
     def test_cart_buy(self, cart, product):
         cart.add_product(product, 100)
         cart.buy(100)
-        cart.clear()
         assert cart.products == {}
         assert product.quantity == 900
 

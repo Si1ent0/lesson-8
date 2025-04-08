@@ -16,14 +16,10 @@ class Product:
         self.quantity = quantity
 
     def check_quantity(self, quantity) -> bool:
-        if self.quantity >= quantity:
-            return True
-        else:
-            return False
+        return self.quantity >= quantity
 
     def buy(self, quantity):
-        book_q = self.check_quantity(quantity)
-        if book_q:
+        if self.check_quantity(quantity):
             self.quantity -= quantity
             return self.quantity
         else:
@@ -90,3 +86,4 @@ class Cart:
 
             else:
                 product.quantity -= buy_book
+        self.clear()
